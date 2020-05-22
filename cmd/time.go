@@ -17,7 +17,6 @@ var timeCmd = &cobra.Command{
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("time called")
-		fmt.Println(UserInfo)
 	},
 }
 
