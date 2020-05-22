@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -55,6 +56,23 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	UserInfo.Username = "admin"
+	UserInfo.Password = "admin"
+	err := UserInfo.Validate()
+	if err != nil {
+		log.Println("IsUserAdmin - Validate:", err)
+		return
+	}
+
+	UserInfo.Username = ""
+	UserInfo.Password = "admin"
+	err = UserInfo.Validate()
+	if err != nil {
+		log.Println("IsUserAdmin - Validate:", err)
+		return
+	}
+
 }
 
 // initConfig reads in config file and ENV variables if set.
