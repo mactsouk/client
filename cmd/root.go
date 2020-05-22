@@ -17,7 +17,7 @@ import (
 
 var cfgFile string
 
-var UserInfo handlers.UserPass
+var UserData handlers.UserPass
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -80,5 +80,21 @@ func initConfig() {
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
+	}
+
+	UserData.Username = "admin"
+	UserData.Password = "admin"
+	err := UserData.Validate()
+	if err != nil {
+		fmt.Println("IsUserAdmin - Validate:", err)
+		return
+	}
+
+	UserData.Username = ""
+	UserData.Password = "admin"
+	err = UserData.Validate()
+	if err != nil {
+		fmt.Println("IsUserAdmin - Validate:", err)
+		return
 	}
 }
