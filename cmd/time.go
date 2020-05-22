@@ -17,6 +17,22 @@ var timeCmd = &cobra.Command{
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("time called")
+		UserData.Username = "admin"
+		UserData.Password = "admin"
+		fmt.Printf("#%v\n", UserData)
+		err := UserData.Validate()
+		if err != nil {
+			fmt.Println("IsUserAdmin - Validate:", err)
+			return
+		}
+
+		UserData.Username = ""
+		fmt.Printf("#%v\n", UserData)
+		err = UserData.Validate()
+		if err != nil {
+			fmt.Println("IsUserAdmin - Validate:", err)
+			return
+		}
 	},
 }
 
