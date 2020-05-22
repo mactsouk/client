@@ -6,7 +6,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -61,7 +60,7 @@ func init() {
 	UserInfo.Password = "admin"
 	err := UserInfo.Validate()
 	if err != nil {
-		log.Println("IsUserAdmin - Validate:", err)
+		fmt.Println("IsUserAdmin - Validate:", err)
 		return
 	}
 
@@ -69,7 +68,7 @@ func init() {
 	UserInfo.Password = "admin"
 	err = UserInfo.Validate()
 	if err != nil {
-		log.Println("IsUserAdmin - Validate:", err)
+		fmt.Println("IsUserAdmin - Validate:", err)
 		return
 	}
 
