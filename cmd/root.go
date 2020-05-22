@@ -84,6 +84,7 @@ func initConfig() {
 
 	UserData.Username = "admin"
 	UserData.Password = "admin"
+	fmt.Printf("#%v\n", UserData)
 	err := UserData.Validate()
 	if err != nil {
 		fmt.Println("IsUserAdmin - Validate:", err)
@@ -91,7 +92,7 @@ func initConfig() {
 	}
 
 	UserData.Username = ""
-	UserData.Password = "admin"
+	fmt.Printf("#%v\n", UserData)
 	err = UserData.Validate()
 	if err != nil {
 		fmt.Println("IsUserAdmin - Validate:", err)
