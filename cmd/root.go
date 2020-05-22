@@ -81,21 +81,4 @@ func initConfig() {
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	}
-
-	UserInfo.Username = "admin"
-	UserInfo.Password = "admin"
-	err := UserInfo.Validate()
-	if err != nil {
-		fmt.Println("IsUserAdmin - Validate:", err)
-		return
-	}
-
-	UserInfo.Username = ""
-	UserInfo.Password = "admin"
-	err = UserInfo.Validate()
-	if err != nil {
-		fmt.Println("IsUserAdmin - Validate:", err)
-		return
-	}
-
 }
