@@ -1,6 +1,7 @@
 /*
 Copyright © 2020 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
 */
+
 package cmd
 
 import (
@@ -25,6 +26,7 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 	req, err := http.NewRequest("GET", SERVER+PORT+"/time", nil)
 	if err != nil {
 		fmt.Println("Timefunction – Error in req: ", err)
+		return
 	}
 
 	c := &http.Client{
@@ -36,6 +38,7 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 
 	if resp == nil || (resp.StatusCode == http.StatusNotFound) {
 		fmt.Println(resp)
+		return
 	}
 
 	data, _ := ioutil.ReadAll(resp.Body)
@@ -44,14 +47,4 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 
 func init() {
 	rootCmd.AddCommand(timeCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// timeCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// timeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
