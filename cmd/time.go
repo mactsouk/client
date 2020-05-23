@@ -23,10 +23,9 @@ var timeCmd = &cobra.Command{
 
 // TimeFunction implements the functionality of the time command
 func TimeFunction(cmd *cobra.Command, args []string) {
-	fmt.Println("time called")
 	req, err := http.NewRequest("GET", SERVER+PORT+"/time", nil)
 	if err != nil {
-		fmt.Println("Error in req: ", err)
+		fmt.Println("Timefunction – Error in req: ", err)
 	}
 
 	c := &http.Client{
@@ -41,7 +40,7 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 	}
 
 	data, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(data)
+	fmt.Println(string(data))
 }
 
 func init() {
