@@ -23,7 +23,7 @@ var loggedCmd = &cobra.Command{
 }
 
 func LoggedUsers(cmd *cobra.Command, args []string) {
-	fmt.Println("getall called")
+	fmt.Println("logged called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 	fmt.Println(userpass)
 
