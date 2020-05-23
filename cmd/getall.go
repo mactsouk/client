@@ -22,31 +22,33 @@ var getallCmd = &cobra.Command{
 
 func GetAll(cmd *cobra.Command, args []string) {
 	fmt.Println("getall called")
-	req, err := http.NewRequest("GET", SERVER+PORT+"/getall", nil)
+
+	userpass := handlers.UserPass{USERNAME, PASSWORD}
+	req, err := http.NewRequest("GET", SERVER+PORT+"/getall", userpass.ToJSON())
 	if err != nil {
 		fmt.Println("GetAll – Error in req: ", err)
 		return
 	}
+	req.Header.Set("Content-Type", "application/json")
 
 	c := &http.Client{
 		Timeout: 15 * time.Second,
 	}
 	resp, err := c.Do(req)
-	defer resp.Body.Close()
-
-	if resp == nil || (resp.StatusCode == http.StatusNotFound) {
+	if resp.StatusCode != http.StatusOK {
 		fmt.Println(resp)
 		return
 	}
+	defer resp.Body.Close()
 
-	var users []handlers.User
+	var users = []handlers.User{}
 	handlers.SliceFromJSON(users, resp.Body)
 	data, err := handlers.PrettyJSON(users)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(data)
+	fmt.Print(data)
 }
 
 func init() {

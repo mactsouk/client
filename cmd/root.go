@@ -5,7 +5,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -32,12 +31,6 @@ var rootCmd = &cobra.Command{
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
-}
-
-// CheckHTTPcode checks whether the two HTTP codes are the same
-func CheckHTTPcode(wanted, given int) bool {
-	log.Println("Comparing", wanted, given)
-	return wanted == given
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

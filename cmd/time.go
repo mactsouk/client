@@ -34,12 +34,12 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 	}
 
 	resp, err := c.Do(req)
-	defer resp.Body.Close()
 
 	if resp == nil || (resp.StatusCode == http.StatusNotFound) {
 		fmt.Println(resp)
 		return
 	}
+	defer resp.Body.Close()
 
 	data, _ := ioutil.ReadAll(resp.Body)
 	fmt.Print(string(data))
