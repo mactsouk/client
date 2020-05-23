@@ -45,6 +45,7 @@ func GetAll(cmd *cobra.Command, args []string) {
 		Timeout: 15 * time.Second,
 	}
 	resp, err := c.Do(req)
+
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println(resp)
 		return
@@ -58,7 +59,7 @@ func GetAll(cmd *cobra.Command, args []string) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Print(data)
+	fmt.Print(users)
 }
 
 func init() {
