@@ -20,8 +20,10 @@ var cfgFile string
 
 var UserData handlers.UserPass
 
-var SERVER = "http://localhost"
-var PORT = ":1234"
+var SERVER string
+var PORT string
+var USERNAME string
+var PASSWORD string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -56,6 +58,10 @@ func init() {
 	// will be global for your application.
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.client.yaml)")
+	rootCmd.PersistentFlags().StringVar(&USERNAME, "username", "", "Username issuing the command")
+	rootCmd.PersistentFlags().StringVar(&PASSWORD, "passoword", "", "Password issuing the command")
+	rootCmd.PersistentFlags().StringVar(&SERVER, "server", "http://localhost", "RESTful server hostname")
+	rootCmd.PersistentFlags().StringVar(&PORT, "port", ":1234", "Port of RESTful Server [:1234]")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.

@@ -40,7 +40,7 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 	}
 
 	data, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(data))
+	fmt.Print(string(data))
 }
 
 func init() {
