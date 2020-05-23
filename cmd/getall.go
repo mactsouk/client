@@ -4,8 +4,8 @@ Copyright © 2020 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
 package cmd
 
 import (
+	"bytes"
 	"fmt"
-	"io"
 	"net/http"
 	"time"
 
@@ -26,14 +26,15 @@ func GetAll(cmd *cobra.Command, args []string) {
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 	fmt.Println(userpass)
 
-	var r io.Reader
-	err := userpass.FromJSON(r)
+	// bytes.Buffer is both a Reader and a Writer
+	buf := new(bytes.Buffer)
+	err := userpass.ToJSON(buf)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	req, err := http.NewRequest("GET", SERVER+PORT+"/getall", r)
+	req, err := http.NewRequest("GET", SERVER+PORT+"/getall", buf)
 	if err != nil {
 		fmt.Println("GetAll – Error in req: ", err)
 		return
