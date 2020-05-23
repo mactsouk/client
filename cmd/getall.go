@@ -59,7 +59,8 @@ func GetAll(cmd *cobra.Command, args []string) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Print(users)
+	fmt.Print("Data:", data)
+	fmt.Print("\nUsers:", users)
 }
 
 func init() {
