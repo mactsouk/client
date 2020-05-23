@@ -36,7 +36,7 @@ func Login(cmd *cobra.Command, args []string) {
 
 	req, err := http.NewRequest("POST", SERVER+PORT+"/login", buf)
 	if err != nil {
-		fmt.Println("LoggedUsers – Error in req: ", err)
+		fmt.Println("Login – Error in req: ", err)
 		return
 	}
 	req.Header.Set("Content-Type", "application/json")
