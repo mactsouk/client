@@ -6,6 +6,9 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
+	"net/http"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -21,7 +24,24 @@ var timeCmd = &cobra.Command{
 // TimeFunction implements the functionality of the time command
 func TimeFunction(cmd *cobra.Command, args []string) {
 	fmt.Println("time called")
+	req, err := http.NewRequest("GET", SERVER+PORT+"/time", nil)
+	if err != nil {
+		fmt.Println("Error in req: ", err)
+	}
 
+	c := &http.Client{
+		Timeout: 15 * time.Second,
+	}
+
+	resp, err := c.Do(req)
+	defer resp.Body.Close()
+
+	if resp == nil || (resp.StatusCode == http.StatusNotFound) {
+		fmt.Println(resp)
+	}
+
+	data, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(data)
 }
 
 func init() {

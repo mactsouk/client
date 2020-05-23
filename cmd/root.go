@@ -20,6 +20,9 @@ var cfgFile string
 
 var UserData handlers.UserPass
 
+var SERVER = "http://localhost"
+var PORT = ":1234"
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "client",
