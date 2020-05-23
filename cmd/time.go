@@ -21,6 +21,7 @@ var timeCmd = &cobra.Command{
 // TimeFunction implements the functionality of the time command
 func TimeFunction(cmd *cobra.Command, args []string) {
 	fmt.Println("time called")
+
 }
 
 func init() {
