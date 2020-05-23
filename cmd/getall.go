@@ -53,14 +53,14 @@ func GetAll(cmd *cobra.Command, args []string) {
 	defer resp.Body.Close()
 
 	var users = []handlers.User{}
-	handlers.SliceFromJSON(users, resp.Body)
+	handlers.SliceFromJSON(&users, resp.Body)
+	fmt.Println("Users:", users)
 	data, err := handlers.PrettyJSON(users)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Print("Data:", data)
-	fmt.Print("\nUsers:", users)
 }
 
 func init() {
