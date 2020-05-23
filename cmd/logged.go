@@ -47,7 +47,7 @@ func LoggedUsers(cmd *cobra.Command, args []string) {
 	resp, err := c.Do(req)
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Println(resp)
+		fmt.Println("Server response HTTP status code", resp.StatusCode)
 		return
 	}
 	defer resp.Body.Close()
