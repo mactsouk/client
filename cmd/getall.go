@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"time"
 
@@ -22,9 +23,16 @@ var getallCmd = &cobra.Command{
 
 func GetAll(cmd *cobra.Command, args []string) {
 	fmt.Println("getall called")
-
 	userpass := handlers.UserPass{USERNAME, PASSWORD}
-	req, err := http.NewRequest("GET", SERVER+PORT+"/getall", userpass.ToJSON())
+
+	var r io.Reader
+	err := userpass.FromJSON(r)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	req, err := http.NewRequest("GET", SERVER+PORT+"/getall", r)
 	if err != nil {
 		fmt.Println("GetAll – Error in req: ", err)
 		return
