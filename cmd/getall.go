@@ -23,7 +23,8 @@ var getallCmd = &cobra.Command{
 
 func GetAll(cmd *cobra.Command, args []string) {
 	fmt.Println("getall called")
-	userpass := handlers.UserPass{USERNAME, PASSWORD}
+	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
+	fmt.Println(userpass)
 
 	var r io.Reader
 	err := userpass.FromJSON(r)
