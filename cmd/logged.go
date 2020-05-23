@@ -60,7 +60,7 @@ func LoggedUsers(cmd *cobra.Command, args []string) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Print("Data:", data)
+	fmt.Print("Data: ", data)
 }
 
 func init() {
