@@ -34,6 +34,10 @@ func TimeFunction(cmd *cobra.Command, args []string) {
 	}
 
 	resp, err := c.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	if resp == nil || (resp.StatusCode == http.StatusNotFound) {
 		fmt.Println(resp)

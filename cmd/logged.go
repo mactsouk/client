@@ -44,7 +44,12 @@ func LoggedUsers(cmd *cobra.Command, args []string) {
 	c := &http.Client{
 		Timeout: 15 * time.Second,
 	}
+
 	resp, err := c.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("Server response HTTP status code", resp.StatusCode)

@@ -45,6 +45,10 @@ func GetAll(cmd *cobra.Command, args []string) {
 		Timeout: 15 * time.Second,
 	}
 	resp, err := c.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println(resp)
