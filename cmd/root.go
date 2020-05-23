@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -30,8 +31,9 @@ var rootCmd = &cobra.Command{
 }
 
 // CheckHTTPcode checks whether the two HTTP codes are the same
-func CheckHTTPcode(x, y int) bool {
-	return x == y
+func CheckHTTPcode(wanted, given int) bool {
+	log.Println("Comparing", wanted, given)
+	return wanted == given
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

@@ -13,11 +13,14 @@ import (
 // timeCmd represents the time command
 var timeCmd = &cobra.Command{
 	Use:   "time",
-	Short: "A brief description of your command",
-	Long:  ``,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("time called")
-	},
+	Short: "For the /time endpoint",
+	Long:  `Visiting the /time endpoint with GET HTTP request`,
+	Run:   TimeFunction,
+}
+
+// TimeFunction implements the functionality of the time command
+func TimeFunction(cmd *cobra.Command, args []string) {
+	fmt.Println("time called")
 }
 
 func init() {
