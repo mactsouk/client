@@ -29,6 +29,11 @@ var rootCmd = &cobra.Command{
 	//	Run: func(cmd *cobra.Command, args []string) { },
 }
 
+// CheckHTTPcode checks whether the two HTTP codes are the same
+func CheckHTTPcode(x, y int) bool {
+	return x == y
+}
+
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
