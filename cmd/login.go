@@ -25,7 +25,6 @@ var loginCmd = &cobra.Command{
 func Login(cmd *cobra.Command, args []string) {
 	fmt.Println("login called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
-	fmt.Println(userpass)
 
 	// bytes.Buffer is both a Reader and a Writer
 	buf := new(bytes.Buffer)
@@ -46,12 +45,11 @@ func Login(cmd *cobra.Command, args []string) {
 		Timeout: 15 * time.Second,
 	}
 	resp, err := c.Do(req)
-
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println(resp)
 		return
 	}
-	defer resp.Body.Close()
+	resp.Body.Close()
 }
 
 func init() {

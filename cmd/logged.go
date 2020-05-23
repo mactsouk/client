@@ -25,7 +25,6 @@ var loggedCmd = &cobra.Command{
 func LoggedUsers(cmd *cobra.Command, args []string) {
 	fmt.Println("logged called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
-	fmt.Println(userpass)
 
 	// bytes.Buffer is both a Reader and a Writer
 	buf := new(bytes.Buffer)
