@@ -58,10 +58,10 @@ func init() {
 	// will be global for your application.
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.client.yaml)")
-	rootCmd.PersistentFlags().StringVar(&USERNAME, "username", "", "Username issuing the command")
-	rootCmd.PersistentFlags().StringVar(&PASSWORD, "passoword", "", "Password issuing the command")
+	rootCmd.PersistentFlags().StringVarP(&USERNAME, "username", "u", "", "Username issuing the command")
+	rootCmd.PersistentFlags().StringVarP(&PASSWORD, "password", "p", "", "Password issuing the command")
 	rootCmd.PersistentFlags().StringVar(&SERVER, "server", "http://localhost", "RESTful server hostname")
-	rootCmd.PersistentFlags().StringVar(&PORT, "port", ":1234", "Port of RESTful Server [:1234]")
+	rootCmd.PersistentFlags().StringVar(&PORT, "port", ":1234", "Port of RESTful Server")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
