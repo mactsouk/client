@@ -29,7 +29,6 @@ func Delete(cmd *cobra.Command, args []string) {
 		fmt.Println("User ID value should be greater than 0!", USERID)
 		return
 	}
-	fmt.Println("User ID:", USERID)
 
 	fmt.Println("delete called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
@@ -61,7 +60,8 @@ func Delete(cmd *cobra.Command, args []string) {
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		fmt.Println(resp)
+		fmt.Println("Full response:", resp)
+		fmt.Println("Response code:", resp.StatusCode)
 		return
 	}
 	defer resp.Body.Close()
