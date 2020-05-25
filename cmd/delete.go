@@ -25,9 +25,10 @@ var deleteCmd = &cobra.Command{
 func Delete(cmd *cobra.Command, args []string) {
 	USERID, _ := cmd.Flags().GetInt("id")
 	if USERID <= 0 {
-		fmt.Println("User ID value should be greater than 0:", USERID)
+		fmt.Println("User ID value should be greater than 0!", USERID)
 		return
 	}
+	fmt.Println("User ID:", USERID)
 
 	fmt.Println("delete called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
