@@ -42,7 +42,7 @@ func GetUserInfo(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+strconv.Itoa(USERID), buf)
+	req, err := http.NewRequest("GET", SERVER+PORT+"/username/"+strconv.Itoa(USERID), buf)
 	if err != nil {
 		fmt.Println("GetUserInfo – Error in req: ", err)
 		return
