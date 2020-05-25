@@ -32,7 +32,6 @@ func GetUserInfo(cmd *cobra.Command, args []string) {
 	}
 
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
-	fmt.Println(userpass)
 
 	// bytes.Buffer is both a Reader and a Writer
 	buf := new(bytes.Buffer)
