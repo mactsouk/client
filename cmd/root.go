@@ -22,6 +22,7 @@ var SERVER string
 var PORT string
 var USERNAME string
 var PASSWORD string
+var DATA string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -52,6 +53,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.client.yaml)")
 	rootCmd.PersistentFlags().StringVarP(&USERNAME, "username", "u", "", "Username issuing the command")
 	rootCmd.PersistentFlags().StringVarP(&PASSWORD, "password", "p", "", "Password issuing the command")
+	rootCmd.PersistentFlags().StringVarP(&DATA, "data", "d", "", "JSON record to be sent to the RESTful Server")
 	rootCmd.PersistentFlags().StringVar(&SERVER, "server", "http://localhost", "RESTful server hostname")
 	rootCmd.PersistentFlags().StringVar(&PORT, "port", ":1234", "Port of RESTful Server")
 

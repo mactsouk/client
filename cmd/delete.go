@@ -41,7 +41,7 @@ func Delete(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+USERID, buf)
+	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+string(USERID), buf)
 	if err != nil {
 		fmt.Println("GetAll – Error in req: ", err)
 		return
