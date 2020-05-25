@@ -23,6 +23,12 @@ var deleteCmd = &cobra.Command{
 }
 
 func Delete(cmd *cobra.Command, args []string) {
+	USERID, _ := cmd.Flags().GetInt("id")
+	if USERID <= 0 {
+		fmt.Println("User ID value should be greater than 0:", USERID)
+		return
+	}
+
 	fmt.Println("delete called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 	fmt.Println(userpass)
@@ -35,7 +41,7 @@ func Delete(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+UserID, buf)
+	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+USERID, buf)
 	if err != nil {
 		fmt.Println("GetAll – Error in req: ", err)
 		return
@@ -61,4 +67,5 @@ func Delete(cmd *cobra.Command, args []string) {
 
 func init() {
 	rootCmd.AddCommand(deleteCmd)
+	deleteCmd.Flags().Int("id", -1, "User ID")
 }
