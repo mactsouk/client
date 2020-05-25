@@ -44,7 +44,7 @@ func GetUserInfo(cmd *cobra.Command, args []string) {
 
 	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+strconv.Itoa(USERID), buf)
 	if err != nil {
-		fmt.Println("GetAll – Error in req: ", err)
+		fmt.Println("GetUserInfo – Error in req: ", err)
 		return
 	}
 	req.Header.Set("Content-Type", "application/json")
@@ -65,10 +65,13 @@ func GetUserInfo(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	var temp handlers.User
-	temp.FromJSON(resp.Body)
-	handlers.PrettyJSON(temp)
+	var returnUser = handlers.User{}
+	err = returnUser.FromJSON(resp.Body)
+	if err != nil {
+		fmt.Println("GetUserInfo:", err)
+	}
 
+	handlers.PrettyJSON(returnUser)
 	defer resp.Body.Close()
 }
 
