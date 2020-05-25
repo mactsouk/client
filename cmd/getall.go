@@ -1,6 +1,7 @@
 /*
 Copyright © 2020 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
 */
+
 package cmd
 
 import (
@@ -44,6 +45,7 @@ func GetAll(cmd *cobra.Command, args []string) {
 	c := &http.Client{
 		Timeout: 15 * time.Second,
 	}
+
 	resp, err := c.Do(req)
 	if err != nil {
 		fmt.Println(err)

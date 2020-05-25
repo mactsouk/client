@@ -5,8 +5,12 @@ Copyright © 2020 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
 package cmd
 
 import (
+	"bytes"
 	"fmt"
+	"net/http"
+	"time"
 
+	"github.com/mactsouk/handlers"
 	"github.com/spf13/cobra"
 )
 
@@ -20,6 +24,39 @@ var deleteCmd = &cobra.Command{
 
 func Delete(cmd *cobra.Command, args []string) {
 	fmt.Println("delete called")
+	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
+	fmt.Println(userpass)
+
+	// bytes.Buffer is both a Reader and a Writer
+	buf := new(bytes.Buffer)
+	err := userpass.ToJSON(buf)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+UserID, buf)
+	if err != nil {
+		fmt.Println("GetAll – Error in req: ", err)
+		return
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	c := &http.Client{
+		Timeout: 15 * time.Second,
+	}
+
+	resp, err := c.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		fmt.Println(resp)
+		return
+	}
+	defer resp.Body.Close()
 }
 
 func init() {
