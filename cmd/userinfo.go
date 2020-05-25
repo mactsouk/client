@@ -69,9 +69,15 @@ func GetUserInfo(cmd *cobra.Command, args []string) {
 	err = returnUser.FromJSON(resp.Body)
 	if err != nil {
 		fmt.Println("GetUserInfo:", err)
+		return
 	}
 
-	handlers.PrettyJSON(returnUser)
+	t, err := handlers.PrettyJSON(returnUser)
+	if err != nil {
+		fmt.Println("PrettyJSON:", err)
+		return
+	}
+	fmt.Println(t)
 	defer resp.Body.Close()
 }
 
