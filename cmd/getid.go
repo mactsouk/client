@@ -15,9 +15,11 @@ var getidCmd = &cobra.Command{
 	Use:   "getid",
 	Short: "A brief description of your command",
 	Long:  ``,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("getid called")
-	},
+	Run:   GetID,
+}
+
+func GetID(cmd *cobra.Command, args []string) {
+	fmt.Println("getid called")
 }
 
 func init() {

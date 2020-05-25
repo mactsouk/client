@@ -15,9 +15,11 @@ var userinfoCmd = &cobra.Command{
 	Use:   "userinfo",
 	Short: "A brief description of your command",
 	Long:  ``,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("userinfo called")
-	},
+	Run:   GetUserInfo,
+}
+
+func GetUserInfo(cmd *cobra.Command, args []string) {
+	fmt.Println("userinfo called")
 }
 
 func init() {
