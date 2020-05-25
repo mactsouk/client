@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/mactsouk/handlers"
@@ -42,7 +43,7 @@ func Delete(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+string(USERID), buf)
+	req, err := http.NewRequest("DELETE", SERVER+PORT+"/username/"+strconv.Itoa(USERID), buf)
 	if err != nil {
 		fmt.Println("GetAll – Error in req: ", err)
 		return
