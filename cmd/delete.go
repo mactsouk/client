@@ -18,7 +18,7 @@ import (
 // deleteCmd represents the delete command
 var deleteCmd = &cobra.Command{
 	Use:   "delete",
-	Short: "A brief description of your command",
+	Short: "Deleting existing users from the system given the User ID.",
 	Long:  ``,
 	Run:   Delete,
 }

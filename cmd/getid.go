@@ -18,7 +18,7 @@ import (
 // getidCmd represents the getid command
 var getidCmd = &cobra.Command{
 	Use:   "getid",
-	Short: "A brief description of your command",
+	Short: "Get the ID of a user given a handlers.UserPass structure.",
 	Long:  ``,
 	Run:   GetID,
 }

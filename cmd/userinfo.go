@@ -18,7 +18,7 @@ import (
 // userinfoCmd represents the userinfo command
 var userinfoCmd = &cobra.Command{
 	Use:   "userinfo",
-	Short: "A brief description of your command",
+	Short: "This command returns the user information given a user ID.",
 	Long:  ``,
 	Run:   GetUserInfo,
 }

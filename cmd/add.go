@@ -19,8 +19,8 @@ import (
 // addCmd represents the add command
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "A brief description of your command",
-	Long:  ``,
+	Short: "Adding new users to the system.",
+	Long:  `The input is in the handlers.Input format.`,
 	Run:   Add,
 }
 

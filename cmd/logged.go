@@ -17,7 +17,7 @@ import (
 // loggedCmd represents the logged command
 var loggedCmd = &cobra.Command{
 	Use:   "logged",
-	Short: "A brief description of your command",
+	Short: "Returns the list of logged in users.",
 	Long:  ``,
 	Run:   LoggedUsers,
 }

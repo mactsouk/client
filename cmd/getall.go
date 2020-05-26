@@ -17,7 +17,7 @@ import (
 // getallCmd represents the getall command
 var getallCmd = &cobra.Command{
 	Use:   "getall",
-	Short: "A brief description of your command",
+	Short: "Returns a list of all users.",
 	Long:  ``,
 	Run:   GetAll,
 }

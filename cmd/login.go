@@ -17,7 +17,7 @@ import (
 // loginCmd represents the login command
 var loginCmd = &cobra.Command{
 	Use:   "login",
-	Short: "For logging in into the system.",
+	Short: "Allows a user to log in into the system.",
 	Long:  ``,
 	Run:   Login,
 }

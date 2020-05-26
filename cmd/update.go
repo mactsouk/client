@@ -19,7 +19,7 @@ import (
 // updateCmd represents the update command
 var updateCmd = &cobra.Command{
 	Use:   "update",
-	Short: "A command for updating existing records.",
+	Short: "This command is for updating existing users.",
 	Long:  ``,
 	Run:   Update,
 }
