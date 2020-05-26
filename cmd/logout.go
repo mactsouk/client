@@ -17,7 +17,7 @@ import (
 // logoutCmd represents the logout command
 var logoutCmd = &cobra.Command{
 	Use:   "logout",
-	Short: "A brief description of your command",
+	Short: "Allows a user to logout from the system.",
 	Long:  ``,
 	Run:   Logout,
 }
