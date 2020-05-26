@@ -23,7 +23,6 @@ var logoutCmd = &cobra.Command{
 }
 
 func Logout(cmd *cobra.Command, args []string) {
-	fmt.Println("logout called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 
 	// bytes.Buffer is both a Reader and a Writer

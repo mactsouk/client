@@ -2,6 +2,7 @@
 Copyright © 2020 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
 
 */
+
 package cmd
 
 import (
@@ -23,7 +24,6 @@ var loggedCmd = &cobra.Command{
 }
 
 func LoggedUsers(cmd *cobra.Command, args []string) {
-	fmt.Println("logged called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 
 	// bytes.Buffer is both a Reader and a Writer
@@ -69,14 +69,4 @@ func LoggedUsers(cmd *cobra.Command, args []string) {
 
 func init() {
 	rootCmd.AddCommand(loggedCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// loggedCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// loggedCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

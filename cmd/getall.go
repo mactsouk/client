@@ -23,7 +23,6 @@ var getallCmd = &cobra.Command{
 }
 
 func GetAll(cmd *cobra.Command, args []string) {
-	fmt.Println("getall called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 
 	// bytes.Buffer is both a Reader and a Writer

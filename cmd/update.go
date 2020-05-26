@@ -41,11 +41,9 @@ func Update(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	fmt.Println("newUserData:", newUserData)
 	userSlice := []handlers.Input{}
 	userSlice = append(userSlice, userpass)
 	userSlice = append(userSlice, newUserData)
-	fmt.Println("userSlice:", userSlice)
 
 	// bytes.Buffer is both a Reader and a Writer
 	buf := new(bytes.Buffer)
