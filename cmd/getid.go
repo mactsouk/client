@@ -56,7 +56,7 @@ func GetID(cmd *cobra.Command, args []string) {
 		fmt.Println("Response code:", resp.StatusCode)
 		return
 	}
-	fmt.Println(resp.Body)
+	fmt.Println(string(resp.Body))
 	defer resp.Body.Close()
 }
 
