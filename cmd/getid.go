@@ -24,7 +24,6 @@ var getidCmd = &cobra.Command{
 }
 
 func GetID(cmd *cobra.Command, args []string) {
-	fmt.Println("getid called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 
 	// bytes.Buffer is both a Reader and a Writer
