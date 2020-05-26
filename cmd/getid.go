@@ -7,6 +7,7 @@ package cmd
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"time"
 
@@ -56,8 +57,13 @@ func GetID(cmd *cobra.Command, args []string) {
 		fmt.Println("Response code:", resp.StatusCode)
 		return
 	}
-	data := resp.Body
-	fmt.Println(string(data))
+	data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("GetID:", err)
+		return
+	}
+
+	fmt.Print(string(data))
 	defer resp.Body.Close()
 }
 
