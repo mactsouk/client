@@ -55,7 +55,7 @@ func Update(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	req, err := http.NewRequest("POST", SERVER+PORT+"/add", buf)
+	req, err := http.NewRequest("PUT", SERVER+PORT+"/update", buf)
 	if err != nil {
 		fmt.Println("GetID – Error in req: ", err)
 		return
