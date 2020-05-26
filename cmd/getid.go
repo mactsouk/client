@@ -57,7 +57,7 @@ func GetID(cmd *cobra.Command, args []string) {
 		return
 	}
 	data := resp.Body
-	fmt.Println(data)
+	fmt.Println(string(data))
 	defer resp.Body.Close()
 }
 
