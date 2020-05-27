@@ -27,17 +27,17 @@ var updateCmd = &cobra.Command{
 func Update(cmd *cobra.Command, args []string) {
 	userpass := handlers.Input{Username: USERNAME, Password: PASSWORD, Admin: 0}
 
-	if len(load) == 0 {
-		fmt.Println("No user data:", load)
+	if len(DATA) == 0 {
+		fmt.Println("No user data:", DATA)
 		return
 	}
 
 	// Convert load into handlers.Input Structure
 	var newUserData handlers.Input
-	temp := []byte(load)
+	temp := []byte(DATA)
 	err := json.Unmarshal(temp, &newUserData)
 	if err != nil {
-		fmt.Println("Update – error umarshalling user input:", load)
+		fmt.Println("Update – error umarshalling user input:", DATA)
 		return
 	}
 
@@ -87,5 +87,4 @@ func Update(cmd *cobra.Command, args []string) {
 
 func init() {
 	rootCmd.AddCommand(updateCmd)
-	updateCmd.Flags().StringVarP(&load, "data", "d", "", "User Record - {username, password, admin}")
 }
