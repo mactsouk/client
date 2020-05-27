@@ -24,7 +24,6 @@ var userinfoCmd = &cobra.Command{
 }
 
 func GetUserInfo(cmd *cobra.Command, args []string) {
-	fmt.Println("userinfo called")
 	USERID, _ := cmd.Flags().GetInt("id")
 	if USERID <= 0 {
 		fmt.Println("User ID value should be greater than 0!", USERID)

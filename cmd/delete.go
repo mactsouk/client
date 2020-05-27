@@ -30,7 +30,6 @@ func Delete(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	fmt.Println("delete called")
 	userpass := handlers.UserPass{Username: USERNAME, Password: PASSWORD}
 
 	// bytes.Buffer is both a Reader and a Writer
