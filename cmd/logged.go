@@ -1,6 +1,5 @@
 /*
 Copyright © 2020 Mihalis Tsoukalos <mihalistsoukalos@gmail.com>
-
 */
 
 package cmd
